@@ -1,10 +1,14 @@
 const mongoose =  require("mongoose")
+const dotenv = require('dotenv').config()
 
 const connectDB = async () => {
-    const connect = mongoose.connect("mongodb://localhost:27017/KoinX")
-    // console.log("Database Connected ", connect.connection.host, connect.connection.name)
+    let database = "KoinX"
+    const connect = await mongoose.connect(`mongodb+srv://manishkumawat1999:${process.env.MONGODB}@cluster0.o0mt9.mongodb.net/${database}?retryWrites=true&w=majority&appName=Cluster0`)
+    .then(() =>{
+        console.log("Database Connected! Great News.")
+    }).catch(error => {
+        console.log(error.message)
+    })
 }
-
-
 
 module.exports = connectDB

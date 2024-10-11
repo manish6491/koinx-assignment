@@ -1,18 +1,53 @@
 const mongoose = require("mongoose")
 
-const contactSchema = mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, "Please add name"]
-    }, 
-    phone: {
+const bitcoinSchema = mongoose.Schema({
+    current_price: {
         type: Number,
-        required: [true, "Please add phone"]
+        required: true
     }, 
-    email: {
-        type: String,
-        required: [true, "Please add email"]
+    market_cap: {
+        type: Number,
+        required: true
+    }, 
+    change_in_24h: {
+        type: Number,
+        required: true
     }
-})
+}, { collection: 'Bitcoin' }, {timestamps: true})
 
-module.exports = mongoose.model("Contact", contactSchema)
+const maticSchema = mongoose.Schema({
+    current_price: {
+        type: Number,
+        required: true
+    }, 
+    market_cap: {
+        type: Number,
+        required: true
+    }, 
+    change_in_24h: {
+        type: Number,
+        required: true
+    }
+}, { collection: 'Matic' }, {timestamps: true})
+
+const ethereumSchema = mongoose.Schema({
+    current_price: {
+        type: Number,
+        required: true
+    }, 
+    market_cap: {
+        type: Number,
+        required: true
+    }, 
+    change_in_24h: {
+        type: Number,
+        required: true
+    }
+}, { collection: 'Ethereum' }, {timestamps: true})
+
+const Bitcoin = mongoose.model("Bitcoin", bitcoinSchema)
+const Matic = mongoose.model("Matic", maticSchema)
+const Ethereum = mongoose.model("Ethereum", ethereumSchema)
+
+module.exports = {Bitcoin, Matic, Ethereum}
+
