@@ -2,7 +2,7 @@ const models = require("../models/model.js")
 
 const standard_deviation = async (req, res) => {
     console.log(req.body)
-    const coin_name = req.body.coin_name
+    const coin_name = req.body["coin_name"]
     const vsCurrency = "usd"
     const days = "99"
     const precision = "0"
