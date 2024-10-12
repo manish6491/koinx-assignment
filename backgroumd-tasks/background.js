@@ -7,7 +7,7 @@ const models = require("../models/model.js")
 const URL = "https://api.coingecko.com/api/v3/coins/"
 
 // Used crontab expression for scheduling job every 2 hours
-const job_1 = schedule.scheduleJob("*/2 * * * *", async ()=> {
+const job_1 = schedule.scheduleJob("* */2 * * *", async ()=> {
     // Fetching Bitcoin Data 
     await fetch(URL+"bitcoin")
         .then(res => {
