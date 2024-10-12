@@ -3,13 +3,15 @@ const models = require("../models/model.js")
 const standard_deviation = async (req, res) => {
     console.log(req.body)
     const coin_name = req.body["coin_name"]
+    console.log(coin_name)
     const vsCurrency = "usd"
     const days = "99"
     const precision = "0"
     const URL = `https://api.coingecko.com/api/v3/coins/${coin_name}/market_chart?vs_currency=${vsCurrency}&days=${days}&precision=${precision}`
     await fetch(URL)
         .then(res => {
-            return res.json()
+            console.log("#1")
+            return res
         }).then (data => {
             // console.log(data.prices.length)
             // console.log(data.prices)
